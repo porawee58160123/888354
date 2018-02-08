@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Search String Non Sensitive Case</title>
+    <script type="text/javascript">
+      function search(){
+        var text = document.getElementById('nametext').value;
+        var arr_text = text.split(" ");
+        var case_radio = document.querySelector("input[name='case_radio']:checked").value;
+        var text_search = document.getElementsByName('Search');
+        var text_search = text_search[0].value;
+        var count = 0 ;
+        console.log(arr_text);
+
+        for(var i=0 ; i<arr_text.length ; i++){
+          if(case_radio == "No"){
+            arr_text[i] = arr_text[i].toLowerCase();
+            text_search = text_search.toLowerCase();
+          }
+          if(arr_text[i].search(text_search) > -1 ){
+            console.log(arr_text[i]+" "+text_search);
+            count++;
+          }
+        }
+        document.getElementById('result').innerHTML = count;
+       }
+    </script>
+  </head>
+  <body>
+    <center>
+    <h1>Ex2 - Search String Non Sensitive Case</h1><hr>
+    Text Input : <textarea id="nametext"></textarea><br><br>
+    Sensitive Case : <input type="radio" name="case_radio" value="Yes">Yes
+                     <input type="radio" name="case_radio" value="No">No<br><br>
+    Search : <input type="text" name="Search" ><br><br>
+    <button type="button" name="button" onclick="search()">search</button><br><br>
+    Result for Search : <span id="result"></span>
+
+    </center>
+  </body>
+</html>
